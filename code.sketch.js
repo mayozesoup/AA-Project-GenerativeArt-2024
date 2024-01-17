@@ -3,7 +3,12 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  // Define colors for the gradient
+  const color1 = color(138, 43, 226); // Purple color
+  const color2 = color(0, 0, 255); // Blue color
+
+  // Draw gradient background
+  setGradient(0, 0, width, height, color1, color2);
   
   // Draw lantern body
   fill(255, 0, 0); // Red color
@@ -27,7 +32,7 @@ function draw() {
   }
   
   // Draw lantern top
-  fill(255, 0, 0); // Red color
+  fill(255, 255, 0); // Yellow color
   stroke(0);
   beginShape();
   vertex(width / 2 - 75, height / 2 - 90);
@@ -37,7 +42,7 @@ function draw() {
   endShape(CLOSE);
   
   // Draw lantern bottom
-  fill(255, 0, 0); // Red color
+  fill(255, 255, 0); // Yellow color
   stroke(0);
   beginShape();
   vertex(width / 2 - 75, height / 2 + 90);
@@ -65,4 +70,15 @@ function draw() {
   stroke(0);
   strokeWeight(2);
   line(tasselX, tasselY, tasselX, tasselY + tasselLength);
+}
+
+// Function to draw a gradient
+function setGradient(x, y, w, h, color1, color2) {
+  noFill();
+  for (let i = y; i <= y + h; i++) {
+    const inter = map(i, y, y + h, 0, 1.5);
+    const c = lerpColor(color2, color1, inter);
+    stroke(c);
+    line(x, i, x + w, i);
+  }
 }
