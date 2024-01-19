@@ -1,8 +1,14 @@
 function setup() {
   createCanvas(400, 600);
+  for (let i = 0; i < 200; i++) {
+        particles.push(new Particle());
+      }
 }
 
+let particles = [];
 function draw() {
+  
+  
   // Define colors for the gradient
   const color1 = color(138, 43, 226); // Purple color
   const color2 = color(0, 0, 255); // Blue color
@@ -70,6 +76,13 @@ function draw() {
   stroke(0);
   strokeWeight(2);
   line(tasselX, tasselY, tasselX, tasselY + tasselLength);
+  
+  //particles for background
+  
+  for (let particle of particles) {
+        particle.update();
+        particle.display();
+      }
 }
 
 // Function to draw a gradient
@@ -80,5 +93,46 @@ function setGradient(x, y, w, h, color1, color2) {
     const c = lerpColor(color2, color1, inter);
     stroke(c);
     line(x, i, x + w, i);
+  }
+}
+
+
+
+
+class Particle {
+  constructor() {
+    this.position = createVector(random(width), random(height));
+    this.velocity = createVector(random(-1, 1), random(-1, 1));
+    this.color = color(random(255, 204), random(100, 200), random(150, 255), 150);
+    this.size = random(15, 30);
+    this.numPoints = 5; // Number of points in the star
+    this.innerRadius = 5; // Inner radius of the star
+  }
+
+  update() {
+    this.position.add(this.velocity);
+
+    if (this.position.x > width || this.position.x < 0) {
+      this.velocity.x *= -1;
+    }
+
+    if (this.position.y > height || this.position.y < 0) {
+      this.velocity.y *= -1;
+    }
+  }
+
+  display() {
+    noStroke();
+    fill(this.color);
+
+    beginShape();
+    for (let i = 0; i < this.numPoints * 2; i++) {
+      const angle = map(i, 0, this.numPoints * 2, 0, TWO_PI);
+      const radius = i % 2 === 0 ? this.size / 2 : this.innerRadius;
+      const x = this.position.x + radius * cos(angle);
+      const y = this.position.y + radius * sin(angle);
+      vertex(x, y);
+    }
+    endShape(CLOSE);
   }
 }
