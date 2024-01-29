@@ -20,7 +20,7 @@ function draw() {
   fill(255, 0, 0); // Red color
   stroke(0);
   rectMode(CENTER);
-  rect(width / 2, height / 2, 150, 180);
+  rect(width / 2, height / 2, 150, 180, 40);
   
   // Draw wrinkles inside the lantern body
   stroke(0);
@@ -40,27 +40,27 @@ function draw() {
   // Draw lantern top
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  beginShape();
-  vertex(width / 2 - 75, height / 2 - 90);
-  vertex(width / 2 + 75, height / 2 - 90);
-  vertex(width / 2 + 45, height / 2 - 140);
-  vertex(width / 2 - 45, height / 2 - 140);
-  endShape(CLOSE);
+  rect(width/2, height/2-95, 60, 20)
+  
   
   // Draw lantern bottom
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  beginShape();
-  vertex(width / 2 - 75, height / 2 + 90);
-  vertex(width / 2 + 75, height / 2 + 90);
-  vertex(width / 2 + 45, height / 2 + 140);
-  vertex(width / 2 - 45, height / 2 + 140);
-  endShape(CLOSE);
+  rect(width/2, height/2+95, 60, 20)
+  rect(width/2-25, height/2+122.5, 5, 35)
+  rect(width/2-15, height/2+122.5, 5, 35)
+  rect(width/2-5, height/2+122.5, 5, 35)
+  rect(width/2+5, height/2+122.5, 5, 35)
+  rect(width/2+15, height/2+122.5, 5, 35)
+  rect(width/2+25, height/2+122.5, 5, 35)
+
+
+
   
   // Draw hanging string
   stroke(0);
   strokeWeight(2);
-  line(width / 2, 440, width / 2, height);
+  line(width / 2, 405, width / 2, height);
   
   // Draw tassel
   fill(0, 0, 255); // Blue color
