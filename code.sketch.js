@@ -40,19 +40,19 @@ function draw() {
   // Draw lantern top
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  rect(width/2, height/2-95, 60, 20)
+  rect(width/2, height/2-97, 60, 20, 3)
   
   
   // Draw lantern bottom
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  rect(width/2, height/2+95, 60, 20)
-  rect(width/2-25, height/2+122.5, 5, 35)
-  rect(width/2-15, height/2+122.5, 5, 35)
-  rect(width/2-5, height/2+122.5, 5, 35)
-  rect(width/2+5, height/2+122.5, 5, 35)
-  rect(width/2+15, height/2+122.5, 5, 35)
-  rect(width/2+25, height/2+122.5, 5, 35)
+  rect(width/2, height/2+97, 60, 20, 3)
+  rect(width/2-25, height/2+124.5, 5, 35)
+  rect(width/2-15, height/2+124.5, 5, 35)
+  rect(width/2-5, height/2+124.5, 5, 35)
+  rect(width/2+5, height/2+124.5, 5, 35)
+  rect(width/2+15, height/2+124.5, 5, 35)
+  rect(width/2+25, height/2+124.5, 5, 35)
 
 
 
