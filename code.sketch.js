@@ -1,3 +1,5 @@
+
+let x
 function setup() {
   createCanvas(400, 600);
   for (let i = 0; i < 200; i++) {
@@ -7,7 +9,9 @@ function setup() {
 
 let particles = [];
 function draw() {
-  
+  //vibrato
+  let x_offset = random(-15,15);
+  let y_offset = random(-15,15);
   
   // Define colors for the gradient
   const color1 = color(138, 43, 226); // Purple color
@@ -20,7 +24,7 @@ function draw() {
   fill(255, 0, 0); // Red color
   stroke(0);
   rectMode(CENTER);
-  rect(width / 2, height / 2, 150, 180, 40);
+  rect(width / 2 + x_offset, height / 2 + y_offset, 150, 180, 40);
   
   // Draw wrinkles inside the lantern body
   stroke(0);
@@ -34,25 +38,29 @@ function draw() {
   
   for (let i = 0; i < numWrinkles; i++) {
     const y = startY + i * step;
-    line(width / 2 - 70, y, width / 2 + 70, y);
+    line(width / 2 - 70 + x_offset, y + y_offset, width / 2 + 70 + x_offset, y + y_offset);
   }
   
   // Draw lantern top
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  rect(width/2, height/2-97, 60, 20, 3)
+  rect(width/2 + x_offset, height/2-97 + y_offset, 60, 20, 3)
+  
+  //Draw lantern high string
+  fill('black');
+  line(width / 2 + x_offset, 0 , width / 2 + y_offset, height/2-108);
   
   
   // Draw lantern bottom
   fill(255, 255, 0); // Yellow color
   stroke(0);
-  rect(width/2, height/2+97, 60, 20, 3)
-  rect(width/2-25, height/2+124.5, 5, 35)
-  rect(width/2-15, height/2+124.5, 5, 35)
-  rect(width/2-5, height/2+124.5, 5, 35)
-  rect(width/2+5, height/2+124.5, 5, 35)
-  rect(width/2+15, height/2+124.5, 5, 35)
-  rect(width/2+25, height/2+124.5, 5, 35)
+  rect(width/2 + x_offset, height/2+97 + y_offset, 60, 20, 3)
+  rect(width/2-25 + x_offset, height/2+124.5 + y_offset, 5, 35)
+  rect(width/2-15 + x_offset, height/2+124.5 + y_offset, 5, 35)
+  rect(width/2-5 + x_offset, height/2+124.5 + y_offset, 5, 35)
+  rect(width/2+5 + x_offset, height/2+124.5 + y_offset, 5, 35)
+  rect(width/2+15 + x_offset, height/2+124.5 + y_offset, 5, 35)
+  rect(width/2+25 + x_offset, height/2+124.5 + y_offset, 5, 35)
 
 
 
@@ -60,13 +68,13 @@ function draw() {
   // Draw hanging string
   stroke(0);
   strokeWeight(2);
-  line(width / 2, 405, width / 2, height);
+  line(width / 2 + x_offset, 405 + y_offset, width / 2, height);
   
   // Draw tassel
   fill(0, 0, 255); // Blue color
   noStroke();
-  const tasselX = width / 2;
-  const tasselY = height;
+  const tasselX = width / 2 + x_offset;
+  const tasselY = height + y_offset;
   const tasselRadius = 20;
   const tasselLength = 80;
   
